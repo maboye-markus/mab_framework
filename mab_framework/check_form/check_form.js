@@ -226,6 +226,7 @@ mab_dom_ready(() => {
 						searchParams.append(pair[0], pair[1]);
 					}
 
+					// changer pour le vrai ajax (actuellement c'est une classe dans js/mab_jquery.js)
 					$.ajax({
 						url:			form.getAttribute("action"),
 						method:			"POST",

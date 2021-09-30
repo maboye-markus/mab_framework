@@ -78,7 +78,7 @@
 				variable	: false,
 			}
 
-			console.log({ ...defaultOptions, ...JSON.parse(this.element.dataset.parallax), });
+			// console.log({ ...defaultOptions, ...JSON.parse(this.element.dataset.parallax), });
 			if (this.element.dataset.parallax.startsWith('{')) {
 				return ({ ...defaultOptions, ...JSON.parse(this.element.dataset.parallax), });
 			}

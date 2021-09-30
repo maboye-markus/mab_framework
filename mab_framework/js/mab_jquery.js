@@ -84,7 +84,7 @@ class   ElementCollection extends Array {
     }
 }
 
-function    $(param) {
+function    mab_$(param) {
     if (typeof(param) === "string" || param instanceof String) {
         return (new ElementCollection(...document.querySelectorAll(param)));
     }
@@ -93,7 +93,7 @@ function    $(param) {
     }
 }
 
-$.ajax = function ({ url, method, body = {}, contentType, success = () => {} }) {
+mab_$.ajax = function ({ url, method, body = {}, contentType, success = () => {} }) {
     const   queryString     = Object.entries(body)
         .map(([key, value]) => { return (`${key}=${value}`); })
         .join('&');

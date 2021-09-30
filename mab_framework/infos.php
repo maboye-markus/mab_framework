@@ -87,9 +87,9 @@
 	</div>
 
 
-	<!-- ---------- FULLSCREEN -->
+	<!-- ---------- LIGHTBOX -->
 
-	<img class="mab_fullscreen" src="images/element.jpg">
+	<img class="mab_lightbox" src="images/element.jpg">
 
 
 	<!-- ---------- SCROLL -->
@@ -100,6 +100,18 @@
 	<!-- ---------- ANIMATION -->
 
 	<div class="mab_animation"> ANIMATION </div>
+
+
+	<!-- ---------- MAB_IMG_COMP -->
+
+	<div class="mab_img_comp">
+		<div class="img_comp_img img_comp_overlay" style="background-image: url('images/img_test.jpg');"></div>
+		<div class="img_comp_img" style="background-image: url('images/img_test.jpg');"></div>
+	</div>
+
+	<script defer>
+		mab_img_compare();
+	</script>
 
 
 <!-- ========== END TEMPLATE -->

@@ -52,6 +52,77 @@
 
 		<br /><br />
 
+		<div class="mab_img_comp">
+			<div class="img_comp_img img_comp_overlay" style="background-image: url('images/heritage-avant.jpg');"></div>
+			<div class="img_comp_img img_comp_overlay" style="background-image: url('images/heritage-apres.jpg');"></div>
+			<div class="img_comp_img" style="background-image: url('images/heritage-apres.jpg');"></div>
+		</div>
+
+		<script defer>
+			mab_img_compare();
+		</script>
+
+		<br /><br />
+
+		<style>
+			#countdown {
+				display: grid; justify-content: center; align-items: center;
+				grid-template-columns: repeat(4, 70px);
+				background: black; padding: 20px;
+			}
+			#countdown > span {
+				color: white;
+				font-size: 12px;
+				width: 100%; height: 100%;
+			}
+			#countdown > span:not(:last-child) { border-right: 2px solid red; }
+			#countdown > span:not(:first-child) { border-left: 2px solid transparent; }
+			#countdown > span b { font-size: 300%; }
+		</style>
+
+		<!-- Display the countdown timer in an element -->
+		<h2 style="width: 100%; text-align: center; text-transform: uppercase;">on finit dans : </h2>
+		<h1 id="countdown" style="font-size: 42px; width: 100%; text-align: center;"></h1>
+
+		<script>
+			// Set the date we're counting down to
+			// let	countdownDate = new Date("Oct 7, 2021 18:30:00").getTime();
+			let	countdownDate = new Date("Sep 30, 2021 18:30:00").getTime();
+
+			// Update the count down every 1 second
+			let	x = setInterval(() => {
+				// Get today's date and time
+				let	now = new Date().getTime();
+				
+				// Find the distance between now and the count down date
+				let	distance = countdownDate - now;
+				
+				// Time calculations for days, hours, minutes and seconds
+				let	days	= Math.floor(distance / (1000 * 60 * 60 * 24));
+				let	hours	= Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+				let	minutes	= Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+				let	seconds	= Math.floor((distance % (1000 * 60)) / 1000);
+				
+				// Display the result in the element with id="demo"
+				// document.getElementById("countdown").innerHTML = "On finit dans <br />" + days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+				
+				let	countdown = document.getElementById("countdown");
+
+				countdown.innerHTML = "<span> <b>" + days + "</b> <br /> jours </span>";
+				countdown.innerHTML += "<span> <b>" + hours + "</b> <br /> heures </span>";
+				countdown.innerHTML += "<span> <b>" + minutes + "</b> <br /> minutes </span>";
+				countdown.innerHTML += "<span> <b>" + seconds + "</b> <br /> secondes </span>";
+				
+				// If the count down is finished, write some text
+				if (distance < 0) {
+					clearInterval(x);
+					countdown.innerHTML = "EXPIRED";
+				}
+			}, 1000);
+		</script>
+
+		<br /><br />
+
 		<style>
 			form .required {
 				margin: 10px;
@@ -360,7 +431,7 @@
 		<br /><br />
 
 
-		<img style="width: 200px;" class="mab_fullscreen" src="https://i.pinimg.com/originals/63/25/f7/6325f7e7d1f9168402881db1c054261d.jpg"><br />
+		<img style="width: 200px;" class="mab_lightbox" src="https://i.pinimg.com/originals/63/25/f7/6325f7e7d1f9168402881db1c054261d.jpg"><br />
 		<img src="https://www.wallpapertip.com/wmimgs/9-97325_ultra-hd-wallpaper-8k-resolution-nature-nature-in.jpg"><br />
 
 		<br /><br />

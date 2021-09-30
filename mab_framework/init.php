@@ -5,13 +5,9 @@
 <script defer type="text/javascript" src="<?=$path?>/js/mab_jquery.js"></script>
 
 
-<!-- ========== CSS RESET RULES -->
+<!-- ========== CSS RESET / NORMALIZE RULES -->
 
 <!-- <link rel="stylesheet" type="text/css" href="<?=$path?>/css/mab_style_reset.css"> -->
-
-
-<!-- ========== CSS NORMALIZE RULES -->
-
 <link rel="stylesheet" type="text/css" href="<?=$path?>/css/mab_style_normalize.css">
 
 
@@ -42,6 +38,10 @@
 <!-- ========== FRAMEWORK -->
 
 <link rel="stylesheet" type="text/css" href="<?=$path?>/css/mab_style.css">
-
 <script defer type="text/javascript" src="<?=$path?>/js/mab_js.js"></script>
-<script defer type="text/javascript" src="<?=$path?>/js/mab_slider.js"></script>
+
+<link rel="stylesheet" type="text/css" href="<?=$path?>/css/mab_img_compare.css"/>
+<script type="text/javascript" src="<?=$path?>/js/mab_img_compare.js"></script>
+
+<link rel="stylesheet" type="text/css" href="<?=$path?>/css/mab_carousel.css"/>
+<script defer type="text/javascript" src="<?=$path?>/js/mab_carousel.js"></script>

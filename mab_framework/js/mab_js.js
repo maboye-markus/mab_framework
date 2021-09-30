@@ -1,3 +1,71 @@
+// MODAL ------------------------------------------
+
+function	show_modal(modal) {
+	window.setTimeout(() => { modal.style.display = "flex"; }, 500);
+	modal.setAttribute("aria-hidden", "false");
+	disable_scroll();
+}
+
+function	hidde_modal(modal) {
+	let	mab_lightbox = modal.querySelector(".modal_wrapper");
+
+	window.setTimeout(() => {
+		modal.style.display = "none";
+		if (mab_lightbox && modal.id == "mab_lightbox_modal")
+			mab_lightbox.remove();
+	}, 500);
+	modal.setAttribute("aria-hidden", "true");
+	enable_scroll();
+}
+
+const	load_modal = async function (url) {
+	let		target = "#" + url.split("#")[1];
+	let		html = await fetch(url).then(response => response.text());
+	let		fragment = document.createRange().createContextualFragment(html);
+	let		modal;
+	
+	if (fragment) {
+		modal = fragment.querySelector(target);
+		if (modal && modal.classList.contains("mab_modal")) {
+			if (!document.querySelector(target))
+				document.body.append(modal);
+		}
+	}
+	return (modal);
+}
+
+const	open_modal = async function (e) {
+	e.preventDefault();
+
+	let	href = e.target.getAttribute("href");
+	let	modal, close;
+
+	if (href) {
+		if (href.startsWith("#"))
+			modal = document.querySelector(href);
+		else {
+			modal = await load_modal(href);
+			href = "#" + href.split("#")[1];
+			e.target.setAttribute("href", href);
+		}
+		if (modal) {
+			show_modal(modal);
+			close = document.querySelector(href + " .modal_close");
+			if (close)
+				close.addEventListener("click", () => { hidde_modal(modal); });
+			modal.addEventListener("click", (e) => {
+				e.preventDefault();
+
+				if (e.target == modal)
+					hidde_modal(modal);
+			});
+		}
+	}
+}
+
+// END MODAL ------------------------------------------
+
+
 mab_dom_ready(() => {
 
 	// LOADER ------------------------------------------
@@ -15,6 +83,7 @@ mab_dom_ready(() => {
 	}
 
 	// END LOADER ------------------------------------------
+
 
 	// COLLAPSE ------------------------------------------
 
@@ -98,69 +167,6 @@ mab_dom_ready(() => {
 
 	let	modals_open = document.querySelectorAll(".modal_open");
 
-	function	show_modal(modal) {
-		window.setTimeout(() => { modal.style.display = "flex"; }, 500);
-		modal.setAttribute("aria-hidden", "false");
-		disable_scroll();
-	}
-
-	function	hidde_modal(modal) {
-		let	mab_fullscreen = modal.querySelector(".modal_wrapper");
-
-		window.setTimeout(() => {
-			modal.style.display = "none";
-			if (modal.id == "mab_fullscreen_modal" && mab_fullscreen)
-				mab_fullscreen.remove();
-		}, 500);
-		modal.setAttribute("aria-hidden", "true");
-		enable_scroll();
-	}
-
-	const	load_modal = async function (url) {
-		let		target = "#" + url.split("#")[1];
-		let		html = await fetch(url).then(response => response.text());
-		let		fragment = document.createRange().createContextualFragment(html);
-		let		modal;
-		
-		if (fragment) {
-			modal = fragment.querySelector(target);
-			if (modal && modal.classList.contains("mab_modal")) {
-				if (!document.querySelector(target))
-					document.body.append(modal);
-			}
-		}
-		return(modal);
-	}
-
-	const	open_modal = async function (e) {
-		e.preventDefault();
-
-		let	href = e.target.getAttribute("href");
-		let	modal, close;
-
-		if (href) {
-			if (href.startsWith("#"))
-				modal = document.querySelector(href);
-			else {
-				modal = await load_modal(href);
-				href = "#" + href.split("#")[1];
-				e.target.setAttribute("href", href);
-			}
-			if (modal) {
-				show_modal(modal);
-				close = document.querySelector(href + " .modal_close");
-				if (close)
-					close.addEventListener("click", () => { hidde_modal(modal); });
-				modal.addEventListener("click", (e) => {
-					e.preventDefault();
-
-					if (e.target == modal)
-						hidde_modal(modal);
-				});
-			}
-		}
-	}
-
 	modals_open.forEach((open) => { open.addEventListener("click", open_modal) });
 
 	let	all_modals = document.querySelectorAll(".mab_modal");
@@ -178,52 +184,5 @@ mab_dom_ready(() => {
 	}
 
 	// END MODAL ------------------------------------------
-
-
-	// FULLSCREEN ------------------------------------------
-
-	let	mab_fullscreens = document.querySelectorAll(".mab_fullscreen");
-
-	if (mab_fullscreens.length > 0) {
-		let	mab_fullscreen_modal = document.createElement("div");
-		let	modal_close = document.createElement("div");
-
-		mab_fullscreen_modal.className = "mab_modal";
-		mab_fullscreen_modal.id = "mab_fullscreen_modal";
-		mab_fullscreen_modal.setAttribute("aria-hidden", "true");
-		modal_close.className = "modal_close";
-		mab_fullscreen_modal.append(modal_close);
-		document.body.append(mab_fullscreen_modal);
-		modal_close.addEventListener("click", (e) => {
-			e.preventDefault();
-
-			hidde_modal(mab_fullscreen_modal);
-		});
-	}
-
-	mab_fullscreens.forEach((fullscreen) => {
-		fullscreen.addEventListener("click", (e) => {
-			e.preventDefault();
-
-			let	modal = document.getElementById("mab_fullscreen_modal");
-			let	fullscreen_clone = fullscreen.cloneNode(true);
-
-			fullscreen_clone.classList.add("modal_wrapper");
-			fullscreen_clone.classList.remove("mab_fullscreen");
-			if (modal) {
-				modal.append(fullscreen_clone);
-
-				modal.addEventListener("click", (e) => {
-					e.preventDefault();
-
-					if (e.target == modal)
-						hidde_modal(modal);
-				});
-				show_modal(modal);
-			}
-		});
-	});
-
-	// END FULLSCREEN ------------------------------------------
 
 });
