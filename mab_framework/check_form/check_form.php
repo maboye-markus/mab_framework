@@ -1,5 +1,8 @@
 <style>
-	.form_error_border {
+	.form_error_border, .form_error_border * {
+		border-color: transparent !important;
+	}
+	.form_error_border input {
 		border: 2px solid #E3625D !important;
 		/* box-shadow: 0px 0px 3px 1px red; */
 		transition: all 0.4s ease;
@@ -21,4 +24,4 @@
 	let	is_done = false;
 </script>
 
-<script defer type="text/javascript" src="<?=$path?>/check_form/check_form.js"></script>
+<script defer type="text/javascript" src="<?=$path?>/check_form/check_form.js?t=<?=time();?>"></script>

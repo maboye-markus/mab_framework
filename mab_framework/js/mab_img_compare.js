@@ -23,17 +23,17 @@ function	mab_img_compare() {
 		slider.style.left = (w / 2) - (slider.offsetWidth / 2) + "px";
 
 		/*execute a function when the mouse button is pressed:*/
-		slider.addEventListener("mousedown", slideReady);
+		slider.addEventListener("mousedown", slideReady, { passive: true, });
 		/*and another function when the mouse button is released:*/
-		window.addEventListener("mouseup", slideFinish);
+		window.addEventListener("mouseup", slideFinish, { passive: true, });
 		/*or touched (for touch screens:*/
-		slider.addEventListener("touchstart", slideReady);
+		slider.addEventListener("touchstart", slideReady, { passive: true, });
 		/*and released (for touch screens:*/
-		window.addEventListener("touchend", slideFinish);
+		window.addEventListener("touchend", slideFinish, { passive: true, });
 
 		function	slideReady(e) {
 			/*prevent any other actions that may occur when moving over the image:*/
-			e.preventDefault();
+			// e.preventDefault();
 			/*the slider is now clicked and ready to move:*/
 			clicked = 1;
 			/*execute a function when the slider is moved:*/

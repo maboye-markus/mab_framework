@@ -71,8 +71,8 @@ h1, h2, h3, h4, h5, p { margin-top: 0; }
 	line-height: clamp(20px, 1.7vw, 34px);
 }
 .fsize_sm {
-	font-size: clamp(16px, 1.2vw, 18px);
-	line-height: clamp(18px, 1.4vw, 20px);
+	font-size: clamp(16px, 1.2vw, 20px);
+	line-height: clamp(18px, 1.4vw, 22px);
 }
 .fsize_vsm {
 	font-size: clamp(12px, 0.8vw, 14px);

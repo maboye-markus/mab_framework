@@ -150,12 +150,17 @@ mab_dom_ready(() => {
 			e.preventDefault();
 
 			let	href = scroll.getAttribute("href");
-			let	tmp;
+			let	tmp, top;
 
 			if (href) {
 				tmp = document.querySelector(href);
 				if (tmp)
-					tmp.scrollIntoView({ behavior: "smooth" });
+					top = tmp.offsetTop;
+
+					window.scrollTo({
+						top: top,
+						behavior: "smooth",
+					});
 			}
 		});
 	});

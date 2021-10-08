@@ -54,7 +54,6 @@
 
 		<div class="mab_img_comp">
 			<div class="img_comp_img img_comp_overlay" style="background-image: url('images/heritage-avant.jpg');"></div>
-			<div class="img_comp_img img_comp_overlay" style="background-image: url('images/heritage-apres.jpg');"></div>
 			<div class="img_comp_img" style="background-image: url('images/heritage-apres.jpg');"></div>
 		</div>
 
@@ -69,6 +68,9 @@
 				display: grid; justify-content: center; align-items: center;
 				grid-template-columns: repeat(4, 70px);
 				background: black; padding: 20px;
+				width: 500px; height: 300px;
+				position: relative;
+				color: white;
 			}
 			#countdown > span {
 				color: white;
@@ -78,48 +80,14 @@
 			#countdown > span:not(:last-child) { border-right: 2px solid red; }
 			#countdown > span:not(:first-child) { border-left: 2px solid transparent; }
 			#countdown > span b { font-size: 300%; }
+
+			.mab_display { position: absolute; top: 0; right: 0; bottom: 0; left: 0; width: 100%; height: 100%; }
 		</style>
 
 		<!-- Display the countdown timer in an element -->
-		<h2 style="width: 100%; text-align: center; text-transform: uppercase;">on finit dans : </h2>
 		<h1 id="countdown" style="font-size: 42px; width: 100%; text-align: center;"></h1>
 
-		<script>
-			// Set the date we're counting down to
-			// let	countdownDate = new Date("Oct 7, 2021 18:30:00").getTime();
-			let	countdownDate = new Date("Sep 30, 2021 18:30:00").getTime();
-
-			// Update the count down every 1 second
-			let	x = setInterval(() => {
-				// Get today's date and time
-				let	now = new Date().getTime();
-				
-				// Find the distance between now and the count down date
-				let	distance = countdownDate - now;
-				
-				// Time calculations for days, hours, minutes and seconds
-				let	days	= Math.floor(distance / (1000 * 60 * 60 * 24));
-				let	hours	= Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-				let	minutes	= Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-				let	seconds	= Math.floor((distance % (1000 * 60)) / 1000);
-				
-				// Display the result in the element with id="demo"
-				// document.getElementById("countdown").innerHTML = "On finit dans <br />" + days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-				
-				let	countdown = document.getElementById("countdown");
-
-				countdown.innerHTML = "<span> <b>" + days + "</b> <br /> jours </span>";
-				countdown.innerHTML += "<span> <b>" + hours + "</b> <br /> heures </span>";
-				countdown.innerHTML += "<span> <b>" + minutes + "</b> <br /> minutes </span>";
-				countdown.innerHTML += "<span> <b>" + seconds + "</b> <br /> secondes </span>";
-				
-				// If the count down is finished, write some text
-				if (distance < 0) {
-					clearInterval(x);
-					countdown.innerHTML = "EXPIRED";
-				}
-			}, 1000);
-		</script>
+		<script defer type="text/javascript" src="js/countdown.js?t=<?=time();?>"></script>
 
 		<br /><br />
 
@@ -135,102 +103,13 @@
 
 		<div id="ajax_response"></div>
 
-		<form method="post" action="." ajax_target="#ajax_response">
-			<div class="required">
-				<input name="nom" placeholder="nom" />
-			</div>
-			<div class="required">
-				<input name="c" placeholder="prenom" />
-			</div>
-			<div class="required">
-				<input name="email" placeholder="email" />
-			</div>
-			<div class="required">
-				<input name="telephone" placeholder="téléphone" />
-			</div>
-			<div class="row_wrapper required">
-				<label class="mab_radio">
-					<span class="radio_input"> <input type="radio" name="civilite1" value="Mme" /> <span class="radio_control"></span> </span>
-					<span class="radio_label"> Mme </span>
-				</label>
-				<label class="mab_radio">
-					<span class="radio_input"> <input type="radio" name="civilite1" Value="M." /> <span class="radio_control"></span> </span>
-					<span class="radio_label"> M. </span>
-				</label>
-			</div>
-			<!-- <div class="row_wrapper required">
-				<div class="mab_checkbox">
-					<input type="radio" name="civilite2" value="Mme">
-					<label>Mme</label>
-				</div>
-				<div class="mab_checkbox">
-					<input type="radio" name="civilite2" value="M.">
-					<label>M.</label>
-				</div>
-			</div> -->
-			<!-- <div class="required">
-				<select name="pets" id="pet-select">
-				    <option value="">--Please choose an option--</option>
-				    <option value="dog">Dog</option>
-				    <option value="cat">Cat</option>
-				    <option value="hamster">Hamster</option>
-				    <option value="parrot">Parrot</option>
-				    <option value="spider">Spider</option>
-				    <option value="goldfish">Goldfish</option>
-				</select>
-			</div> -->
-			<button>SUBMIT</button>
-		</form>
+		<br /><br />
+
+		<?php require ("form.php"); ?>
 
 		<br /><br />
 
-		<script type="text/javascript">
-			function	send(url, params) {
-				for (name in params) {
-					// si indexOf('?') == -1 c'est qu'il n'y a pas de '?'
-					if (url.indexOf('?') != -1) {
-						url += '&';
-					}
-					else {
-						url += '?';
-					}
-					url += encodeURIComponent(name) + '=' + encodeURIComponent(params[name]);
-				}
-				let	tmp_script  = document.createElement("script");
-
-				tmp_script.src  = url;
-				tmp_script.type = "text/javascript";
-				document.body.appendChild(tmp_script);
-				document.body.removeChild(tmp_script);
-			}
-
-			function	str_callback(str) {
-				alert(str);
-			}
-
-			function	json_callback(json) {
-        		let	tree = "";
-        
-        		for (item in json) { 
-        		    tree += item + '\n';
-        		    for (let i = 0, n = json[item].length; i < n; i++) {
-        		        tree += '\t' + softwares[item][i] + '\n';
-        		    }
-        		}
-        		alert(tree);
-			}
-
-			function	get_infos(choose) {
-				if (choose == "str")
-					send("dynamic_script_loading.php", { nom: "doe", prenom: "john", callback: "str_callback", });
-				else if (choose == "json")
-					send("dynamic_script_loading.php", { callback: "json_callback", });
-			}
-		</script>
-
-		<button onclick="get_infos('str')" style="cursor: pointer;">Envoyer la requête str</button>
-		<br /><br />
-		<button onclick="get_infos('json')" style="cursor: pointer;">Envoyer la requête json</button>
+		<?php require ("dynamic_script.php"); ?>
 
 		<br /><br />
 
@@ -337,88 +216,7 @@
 
 		<br /><br />
 
-		<script type="text/javascript">
-
-			function	toggle_params(param) {
-				if (param.current < param.start)	param.current = param.start;
-				if (param.current > param.end)		param.current = param.end;
-			}
-
-			function	set_animation_step(param, toggle) {
-				let	st = window.pageYOffset || document.documentElement.scrollTop;
-
-				if (st > param.lst) {	// downscroll
-					param.current += param.step;
-				} else {				// upscroll
-					param.current -= param.step;
-				}
-
-				toggle === true ? toggle_params(param) : 0;
-			
-				param.lst = st <= 0 ? 0 : st;
-			}
-
-			function	animate_roue (roue, params) {
-				// roue.style.transform = "rotate3d(1, 0, 1, " + params.rot.current + "deg)" + " scale(" + params.scale.current + ")";
-				roue.style.transform = "rotateZ(" + params.rot.current + "deg)" + " scale(" + params.scale.current + ")";
-			}
-
-			const	handle_animation = () => {
-
-				// static variable
-				if (handle_animation.params === undefined) {
-					handle_animation.params = {
-						scale	: {
-							lst		: 0,
-							step	: 0.01,
-							start	: 0.1,
-							end		: 1,
-							current	: 0.1,
-						},
-						rot		: {
-							lst		: 0,
-							step	: 9,
-							start	: -360,
-							end		: 360,
-							current	: 0,
-						},
-					};
-				}
-
-				let	roue = document.querySelector("#roue");
-
-				set_animation_step(handle_animation.params.scale, true);
-				set_animation_step(handle_animation.params.rot, false);
-
-				animate_roue(roue, handle_animation.params);
-			};
-
-			const	callback = (entries, observer) => {
-				entries.forEach((entry) => {
-					// const	throttle_animation = throttle(handle_animation, 25);
-					const	throttle_animation = handle_animation;
-
-					if (entry.isIntersecting) {
-						document.addEventListener("scroll", throttle_animation);
-					}
-					else {
-						document.removeEventListener("scroll", throttle_animation);
-					}
-				});
-			};
-
-			const	options = {
-				// between 0 and 1 => % of the item visible to get an intersection
-				threshold: 1,
-				// margin detection to get an intersection
-				// rootMargin: "0px 0px -150px 0px",
-			};
-			const	observer = new IntersectionObserver(callback, options);
-		
-			// on verifie que le bloc à animer au scroll est dans la range de l'écran
-			observer.observe(document.querySelector("#anim_scroll"));
-			
-		</script>
+		<script defer type="text/javascript" src="js/animate_wheel.js?t=<?=time();?>"></script>
 
 		<br /><br />
 
@@ -457,7 +255,7 @@
 			SCROLL TOP
 		</p>
 
-		<br /><br /><br /><br /><br /><br />
+		<br /><br /><br /><br />
 
 	</body>
 
