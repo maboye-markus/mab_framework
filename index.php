@@ -122,7 +122,7 @@
 
 		<br /><br />
 
-		<button class="modal_open" href="modal.html#modal2" style="cursor: pointer; padding: 15px 40px;">open modal with ajax</button>
+		<button class="modal_open" href="pages/modal.html#modal2" style="cursor: pointer; padding: 15px 40px;">open modal with ajax</button>
 
 		<br /><br />
 
