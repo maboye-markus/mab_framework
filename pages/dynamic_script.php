@@ -36,9 +36,9 @@
 	
 	function	get_infos(choose) {
 		if (choose == "str")
-		send("dynamic_script_loading.php", { nom: "doe", prenom: "john", callback: "str_callback", });
+		send("pages/dynamic_script_loading.php", { nom: "doe", prenom: "john", callback: "str_callback", });
 		else if (choose == "json")
-		send("dynamic_script_loading.php", { callback: "json_callback", });
+		send("pages/dynamic_script_loading.php", { callback: "json_callback", });
 	}
 </script>
 

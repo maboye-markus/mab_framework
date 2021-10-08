@@ -105,11 +105,11 @@
 
 		<br /><br />
 
-		<?php require ("form.php"); ?>
+		<?php require ("pages/form.php"); ?>
 
 		<br /><br />
 
-		<?php require ("dynamic_script.php"); ?>
+		<?php require ("pages/dynamic_script.php"); ?>
 
 		<br /><br />
 
@@ -220,11 +220,11 @@
 
 		<br /><br />
 
-		<?php require ("scroll_animation.php"); ?>
+		<?php require ("pages/scroll_animation.php"); ?>
 
 		<br /><br />
 
-		<?php require ("parallax.php"); ?>
+		<?php require ("pages/parallax.php"); ?>
 
 		<br /><br />
 
