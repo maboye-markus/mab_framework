@@ -1,29 +1,5 @@
 mab_dom_ready(() => {
 
-	// SLIDER ------------------------------------------
-
-	mab_$(".slider_next").on("click", () => {
-		const   currentImg  = mab_$(".active");
-		const   nextImg     = currentImg.next();
-		
-		currentImg.removeClass("active");
-		if (nextImg.length)
-			nextImg.addClass("active");
-		else
-			mab_$(".slider_inner > *:first-child").addClass("active");
-	});
-	
-	mab_$(".slider_prev").on("click", () => {
-		const   currentImg  = mab_$(".active");
-		const   prevImg     = currentImg.prev();
-		
-		currentImg.removeClass("active");
-		if (prevImg.length)
-			prevImg.addClass("active");
-		else
-			mab_$(".slider_inner > *:last-child").addClass("active");
-	});
-
 	// LIGHTBOX ------------------------------------------
 
 	let	mab_lightbox = document.querySelectorAll(".mab_lightbox");
@@ -32,11 +8,32 @@ mab_dom_ready(() => {
 		let	mab_lightbox_modal = document.createElement("div");
 		let	modal_close = document.createElement("div");
 
+		// on créé la modal lightbox
 		mab_lightbox_modal.className = "mab_modal";
 		mab_lightbox_modal.id = "mab_lightbox_modal";
 		mab_lightbox_modal.setAttribute("aria-hidden", "true");
 		modal_close.className = "modal_close";
 		mab_lightbox_modal.append(modal_close);
+
+		// on créé le carousel
+		let	slider = document.createElement("div");
+		slider.id = "mab_slider_lightbox";
+		slider.className = "mab_slider modal_wrapper";
+		let	tmp = document.createElement("img");
+		tmp.src = "images/next.png";
+		tmp.className = "slider_next";
+		slider.append(tmp);
+		tmp = document.createElement("img");
+		tmp.src="images/prev.png";
+		tmp.className = "slider_prev";
+		slider.append(tmp);
+		tmp = document.createElement("div");
+		tmp.className = "slider_inner";
+		slider.append(tmp);
+
+		mab_lightbox_modal.append(slider);
+
+		// on append la modal au body
 		document.body.append(mab_lightbox_modal);
 		modal_close.addEventListener("click", (e) => {
 			e.preventDefault();
@@ -46,28 +43,68 @@ mab_dom_ready(() => {
 	}
 
 	mab_lightbox.forEach((lightbox) => {
+
+		console.log(lightbox.getAttribute("lb-id"));
+
+		let	lb_id	= lightbox.getAttribute("lb-id");
+		let	all_id	= document.querySelectorAll(`[lb-id="${lb_id}"]`);
+
+		// on a isolé tout les lb-id correspondant à la lightbox en cours
+		// il faut les append dans le slider_inner de mab_slider_lightbox
+
 		lightbox.addEventListener("click", (e) => {
 			e.preventDefault();
 
 			let	modal = document.getElementById("mab_lightbox_modal");
-			let	lightbox_clone = lightbox.cloneNode(true);
+			let	slider_inner = modal.querySelector(".slider_inner");
 
-			lightbox_clone.classList.add("modal_wrapper");
-			lightbox_clone.classList.remove("mab_lightbox");
-			if (modal) {
-				modal.append(lightbox_clone);
+			if (!modal || !slider_inner) return ;
 
-				modal.addEventListener("click", (e) => {
-					e.preventDefault();
+			all_id.forEach((id) => slider_inner.append(id.cloneNode(true)));
+			slider_inner.querySelector("*:first-child").className += " active";
 
-					if (e.target == modal)
-						hidde_modal(modal);
-				});
-				show_modal(modal);
-			}
+			slider_inner.addEventListener("click", (e) => {
+				e.preventDefault();
+
+				if (e.target == slider_inner)
+					hidde_modal(modal);
+			});
+			show_modal(modal);
 		});
 	});
 
 	// END lightbox ------------------------------------------
+
+	// SLIDER ------------------------------------------
+
+	mab_$(".slider_next").on("click", (e) => {
+		let	slider	= e.target.closest(".mab_slider");
+		let	id		= slider.getAttribute("id");
+
+		const   currentImg  = mab_$(`#${id} .active`);
+		const   nextImg     = currentImg.next();
+		
+		currentImg.removeClass("active");
+		if (nextImg.length)
+			nextImg.addClass("active");
+		else
+			mab_$(`#${id} .slider_inner > *:first-child`).addClass("active");
+	});
+	
+	mab_$(".slider_prev").on("click", (e) => {
+		let	slider	= e.target.closest(".mab_slider");
+		let	id		= slider.getAttribute("id");
+
+		const   currentImg  = mab_$(`#${id} .active`);
+		const   prevImg     = currentImg.prev();
+		
+		currentImg.removeClass("active");
+		if (prevImg.length)
+			prevImg.addClass("active");
+		else
+			mab_$(`#${id} .slider_inner > *:last-child`).addClass("active");
+	});
+
+	// END SLIDER ------------------------------------------
 
 });

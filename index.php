@@ -10,7 +10,7 @@
 		<?php require ("mab_framework/init.php"); ?>
 
 	</head>
-	<body style="width: 100vw; height: 400vh;">
+	<body style="width: 100vw; height: 1000vh;">
 
 		<!-- <div class="mab_loader">
 			<img src="images/loading.gif"/>
@@ -126,6 +126,11 @@
 
 		<br /><br />
 
+		<img style="width: 200px;" class="mab_lightbox" lb-id="mab" src="https://i.pinimg.com/originals/63/25/f7/6325f7e7d1f9168402881db1c054261d.jpg"><br />
+		<img style="width: 200px;" class="mab_lightbox" lb-id="mab" src="https://www.wallpapertip.com/wmimgs/9-97325_ultra-hd-wallpaper-8k-resolution-nature-nature-in.jpg"><br />
+
+		<br /><br />
+
 		<style>
 			.modal_wrapper.row_wrapper {
 				justify-content: flex-start;
@@ -157,7 +162,7 @@
 		</style>
 
 		<div class="mab_slider_container">
-			<div class="mab_slider">
+			<div class="mab_slider" id="mab_slider">
 				<img class="slider_next" src="images/next.png">
 				<img class="slider_prev" src="images/prev.png">
 				<div class="slider_inner">
@@ -181,7 +186,7 @@
 		</style>
 
 		<div class="splide_container">
-			<div class="splide">
+			<div id="test" class="splide">
 				<div class="splide__track">
 					<ul class="splide__list">
 						<span class="splide__slide" style="background-image: url('https://i.pinimg.com/originals/63/25/f7/6325f7e7d1f9168402881db1c054261d.jpg');"></span>
@@ -228,8 +233,6 @@
 
 		<br /><br />
 
-
-		<img style="width: 200px;" class="mab_lightbox" src="https://i.pinimg.com/originals/63/25/f7/6325f7e7d1f9168402881db1c054261d.jpg"><br />
 		<img src="https://www.wallpapertip.com/wmimgs/9-97325_ultra-hd-wallpaper-8k-resolution-nature-nature-in.jpg"><br />
 
 		<br /><br />
@@ -242,7 +245,7 @@
 
 		<br /><br />
 
-		<div id="test_scroll2" style="background: green; padding: 20px; margin: auto;" class="mab_animation slide_from_left fit_width column_wrapper">
+		<div id="test_scroll2" style="background: green; padding: 20px; margin: auto;" class="shake mab_animation slide_from_left fit_width column_wrapper">
 			<p>Lorem ipsum dolor sit.</p>
 			<p>Lorem ipsum dolor sit.</p>
 			<p>Lorem ipsum dolor sit.</p>

@@ -86,10 +86,21 @@
 		<div class="splide_close"></div>
 	</div>
 
+	<!-- ---------- MAB CAROUSEL -->
+
+	<div class="mab_slider" id="mab_slider">
+		<img class="slider_next" src="images/next.png">
+		<img class="slider_prev" src="images/prev.png">
+		<div class="slider_inner">
+			<span class="active" style="background: url('img.jpg') no-repeat; background-size: contain; background-position: center;"></span>
+			<span style="background: url('img.jpg') no-repeat; background-size: contain; background-position: center;"></span>
+		</div>
+	</div>
+
 
 	<!-- ---------- LIGHTBOX -->
 
-	<img class="mab_lightbox" src="images/element.jpg">
+	<img class="mab_lightbox" lb-id="mab_lightbox" src="img.jpg">
 
 
 	<!-- ---------- SCROLL -->

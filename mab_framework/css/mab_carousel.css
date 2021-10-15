@@ -1,13 +1,15 @@
 /* SLIDER */
 
-.mab_slider, .mab_slider .slider_inner { width: 100%; height: 100%; position: relative; }
+.mab_slider, .mab_slider .slider_inner { width: 100%; height: 100%; position: relative; z-index: -1; }
+.mab_slider .slider_inner { cursor: pointer; }
+.mab_slider.modal_wrapper { background: unset; }
 .mab_slider .slider_next, .mab_slider .slider_prev  {
-	position: absolute; top: 50%; right: 0; z-index: 1;
+	position: absolute; top: 50%; right: 1%; z-index: 1;
 	transform: translateY(-50%);
 	cursor: pointer;
 	width: 30px; height: 30px;
 }
-.mab_slider .slider_prev { right: unset; left: 0; }
+.mab_slider .slider_prev { right: unset; left: 1%; }
 .mab_slider .slider_inner * {
 	position: absolute; top: 0; right: 0; bottom: 0; left: 0;
 	width: 100%; height: 100%;
@@ -21,9 +23,11 @@
 /* LIGHTBOX */
 
 .mab_lightbox { cursor: pointer; }
-#mab_lightbox_modal .modal_wrapper {
+#mab_lightbox_modal .slider_inner * {
 	cursor: initial;
 	padding: 0;
-	width: unset; max-width: 90vw;
+	width: unset; max-width: 90vw; height: unset;
 	background: unset;
+	top: 50%; left: 50%; transform: translate(-50%, -50%);
 }
+#mab_lightbox_modal .mab_slider .active { opacity: 1; }

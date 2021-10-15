@@ -7,12 +7,12 @@ function	show_modal(modal) {
 }
 
 function	hidde_modal(modal) {
-	let	mab_lightbox = modal.querySelector(".modal_wrapper");
+	let	mab_lightbox = modal.querySelectorAll(".slider_inner > *");
 
 	window.setTimeout(() => {
 		modal.style.display = "none";
 		if (mab_lightbox && modal.id == "mab_lightbox_modal")
-			mab_lightbox.remove();
+			mab_lightbox.forEach((tmp) => tmp.remove());
 	}, 500);
 	modal.setAttribute("aria-hidden", "true");
 	enable_scroll();
