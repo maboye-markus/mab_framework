@@ -37,13 +37,13 @@ bolder	=> On augmente la graisse d'un niveau par rapport à l'élément parent (
 	font-family: "baloo";
 	font-style: normal;
 	font-weight: normal;
-	src: url("baloo/Baloo2-Medium.ttf") format("truetype");
+	src: url("fonts/baloo/Baloo2-Medium.ttf") format("truetype");
 }
 @font-face {
 	font-family: "baloo";
 	font-style: normal;
 	font-weight: bold;
-	src: url("baloo/Baloo2-Bold.ttf") format("truetype");
+	src: url("fonts/baloo/Baloo2-Bold.ttf") format("truetype");
 }
 
 /* bebas_neue ------------------------------------------ */
@@ -52,7 +52,7 @@ bolder	=> On augmente la graisse d'un niveau par rapport à l'élément parent (
 	font-family: "bebas_neue";
 	font-style: normal;
 	font-weight: normal;
-	src: url("bebas_neue/BebasNeue-Regular.ttf") format("truetype");
+	src: url("fonts/bebas_neue/BebasNeue-Regular.ttf") format("truetype");
 }
 
 /* lato ------------------------------------------ */
@@ -61,25 +61,25 @@ bolder	=> On augmente la graisse d'un niveau par rapport à l'élément parent (
 	font-family: "lato";
 	font-style: normal;
 	font-weight: 100;
-	src: url("lato/Lato-Thin.ttf") format("truetype");
+	src: url("fonts/lato/Lato-Thin.ttf") format("truetype");
 }
 @font-face {
 	font-family: "lato";
 	font-style: normal;
 	font-weight: 300;
-	src: url("lato/Lato-Light.ttf") format("truetype");
+	src: url("fonts/lato/Lato-Light.ttf") format("truetype");
 }
 @font-face {
 	font-family: "lato";
 	font-style: normal;
 	font-weight: normal;
-	src: url("lato/Lato-Regular.ttf") format("truetype");
+	src: url("fonts/lato/Lato-Regular.ttf") format("truetype");
 }
 @font-face {
 	font-family: "lato";
 	font-style: normal;
 	font-weight: bold;
-	src: url("lato/Lato-Bold.ttf") format("truetype");
+	src: url("fonts/lato/Lato-Bold.ttf") format("truetype");
 }
 
 /* roboto ------------------------------------------ */
@@ -88,19 +88,19 @@ bolder	=> On augmente la graisse d'un niveau par rapport à l'élément parent (
 	font-family: "roboto";
 	font-style: normal;
 	font-weight: 300;
-	src: url("roboto/Roboto-Light.ttf") format("truetype");
+	src: url("fonts/roboto/Roboto-Light.ttf") format("truetype");
 }
 @font-face {
 	font-family: "roboto";
 	font-style: normal;
 	font-weight: normal;
-	src: url("roboto/Roboto-Medium.ttf") format("truetype");
+	src: url("fonts/roboto/Roboto-Medium.ttf") format("truetype");
 }
 @font-face {
 	font-family: "roboto";
 	font-style: normal;
 	font-weight: bold;
-	src: url("roboto/Roboto-Bold.ttf") format("truetype");
+	src: url("fonts/roboto/Roboto-Bold.ttf") format("truetype");
 }
 
 /* stag_sans ------------------------------------------ */
@@ -109,19 +109,19 @@ bolder	=> On augmente la graisse d'un niveau par rapport à l'élément parent (
 	font-family: "stagSans";
 	font-style: normal;
 	font-weight: 300;
-	src: url("stag_sans/StagSans-Light.otf") format("truetype");
+	src: url("fonts/stag_sans/StagSans-Light.otf") format("truetype");
 }
 @font-face {
 	font-family: "stagSans";
 	font-style: normal;
 	font-weight: normal;
-	src: url("stag_sans/StagSans-Book.otf") format("truetype");
+	src: url("fonts/stag_sans/StagSans-Book.otf") format("truetype");
 }
 @font-face {
 	font-family: "stagSans";
 	font-style: normal;
 	font-weight: bold;
-	src: url("stag_sans/StagSans-Semibold.otf") format("truetype");
+	src: url("fonts/stag_sans/StagSans-Semibold.otf") format("truetype");
 }
 
 /* END FONT-FACE ========================================== */

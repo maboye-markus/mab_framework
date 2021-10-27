@@ -1,5 +1,6 @@
 <!-- ========== TEMPLATE -->
 
+
 	<!-- ---------- LOADER -->
 
 	<div class="mab_loader">
@@ -58,7 +59,7 @@
 	</div>
 
 
-	<!-- ---------- CAROUSEL -->
+	<!-- ---------- SPLIDE -->
 
 	<div class="splide">
 		<div class="splide__track">
@@ -70,7 +71,7 @@
 		</div>
 	</div>
 
-	<!-- ---------- CAROUSEL FULLSCREEN -->
+	<!-- ---------- SPLIDE FULLSCREEN -->
 
 	<div class="splide_container">
 		<div class="splide">
@@ -86,7 +87,8 @@
 		<div class="splide_close"></div>
 	</div>
 
-	<!-- ---------- MAB CAROUSEL -->
+
+	<!-- ---------- SLIDER -->
 
 	<div class="mab_slider" id="mab_slider">
 		<img class="slider_next" src="images/next.png">
@@ -113,16 +115,12 @@
 	<div class="mab_animation"> ANIMATION </div>
 
 
-	<!-- ---------- MAB_IMG_COMP -->
+	<!-- ---------- IMG_COMP -->
 
 	<div class="mab_img_comp">
 		<div class="img_comp_img img_comp_overlay" style="background-image: url('images/img_test.jpg');"></div>
 		<div class="img_comp_img" style="background-image: url('images/img_test.jpg');"></div>
 	</div>
-
-	<script defer>
-		mab_img_compare();
-	</script>
 
 
 <!-- ========== END TEMPLATE -->

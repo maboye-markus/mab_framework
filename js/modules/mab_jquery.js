@@ -1,4 +1,4 @@
-class   AjaxPromise {
+class   		AjaxPromise {
     constructor(promise) {
         this.promise = promise;
     }
@@ -22,7 +22,7 @@ class   AjaxPromise {
     }
 }
 
-class   ElementCollection extends Array {
+class   		ElementCollection extends Array {
     ready(callback) {
         const   isReady = this.some((e) => {
             return (e.readyState != null && e.readyState != "loading");
@@ -84,7 +84,7 @@ class   ElementCollection extends Array {
     }
 }
 
-function    mab_$(param) {
+export function	mab_$(param) {
     if (typeof(param) === "string" || param instanceof String) {
         return (new ElementCollection(...document.querySelectorAll(param)));
     }
@@ -119,3 +119,6 @@ mab_$.ajax = function ({ url, method, body = {}, contentType, success = () => {}
             })
     ));
 };
+
+
+export default	mab_$;

@@ -1,4 +1,4 @@
-function	mab_img_compare() {
+function		mab_img_compare() {
 	var	x, i;
 
 	x = document.querySelectorAll(".img_comp_overlay");
@@ -74,4 +74,5 @@ function	mab_img_compare() {
 		}
 	}
 }
-		
+
+mab_img_compare();

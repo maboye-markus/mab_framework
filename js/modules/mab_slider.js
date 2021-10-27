@@ -1,7 +1,8 @@
-mab_dom_ready(() => {
+import { mab_$ } from "./mab_jquery.js";
+import { show_modal, hidde_modal } from "./mab_modals.js";
 
-	// LIGHTBOX ------------------------------------------
 
+export const	mab_lightbox = () => {
 	let	mab_lightbox = document.querySelectorAll(".mab_lightbox");
 
 	if (mab_lightbox.length > 0) {
@@ -43,9 +44,6 @@ mab_dom_ready(() => {
 	}
 
 	mab_lightbox.forEach((lightbox) => {
-
-		console.log(lightbox.getAttribute("lb-id"));
-
 		let	lb_id	= lightbox.getAttribute("lb-id");
 		let	all_id	= document.querySelectorAll(`[lb-id="${lb_id}"]`);
 
@@ -60,8 +58,14 @@ mab_dom_ready(() => {
 
 			if (!modal || !slider_inner) return ;
 
-			all_id.forEach((id) => slider_inner.append(id.cloneNode(true)));
-			slider_inner.querySelector("*:first-child").className += " active";
+			all_id.forEach((id) => {
+				let	tmp = id.cloneNode(true);
+
+				// il faut que l'image cliquée soit la premiere à être affichée
+				if (id === lightbox)
+					tmp.classList.add("active");
+				slider_inner.append(tmp);
+			});
 
 			slider_inner.addEventListener("click", (e) => {
 				e.preventDefault();
@@ -72,11 +76,9 @@ mab_dom_ready(() => {
 			show_modal(modal);
 		});
 	});
+};
 
-	// END lightbox ------------------------------------------
-
-	// SLIDER ------------------------------------------
-
+export const	mab_slider = () => {
 	mab_$(".slider_next").on("click", (e) => {
 		let	slider	= e.target.closest(".mab_slider");
 		let	id		= slider.getAttribute("id");
@@ -104,7 +106,7 @@ mab_dom_ready(() => {
 		else
 			mab_$(`#${id} .slider_inner > *:last-child`).addClass("active");
 	});
+}
 
-	// END SLIDER ------------------------------------------
 
-});
+export default	mab_slider;
